@@ -41,14 +41,14 @@ var roleBuilder = {
         }
         else {
             
-             var sources = creep.room.find(FIND_STRUCTURES, {
+             var sources = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return ( structure.structureType == STRUCTURE_CONTAINER) 
+                        return ( structure.structureType == STRUCTURE_CONTAINER) && (structure.store > 0);
                     }
             });
             
-            if(creep.withdraw(sources[1],RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[1]);
+            if(creep.withdraw(sources[0],RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(sources[0]);
             }
             /*
             else
