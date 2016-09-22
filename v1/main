@@ -21,31 +21,28 @@ module.exports.loop = function () {
     
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     console.log('Builders: ' + builders.length);
-    
-    var uberbuilders = _.filter(Game.creeps, (creep) => creep.memory.role == 'uberbuilder');
-    console.log('uberBuilders: ' + uberbuilders.length);
 
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     console.log('Upgraders: ' + upgraders.length);
     
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
-    console.log('Repairers: ' + repairers.length);
+    console.log('Repairer storage0: ' + repairers.length);
     
     var repairers2 = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer2');
-    console.log('Repairers2: ' + repairers2.length);
+    console.log('Repairer storage1: ' + repairers2.length);
     
     var repairers3 = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer3');
-    console.log('Repairers3: ' + repairers3.length);
+    console.log('Repairers roads: ' + repairers3.length);
     
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-    console.log('Harvesters: ' + harvesters.length);
-    
-    var harvesters3 = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester3');
-    console.log('Harvesters3: ' + harvesters3.length);
+    console.log('Harvesters main deposit: ' + harvesters.length);
     
     var harvesters2 = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester2');
-    console.log('Harvesters2: ' + harvesters2.length);
+    console.log('Harvesters south deposit: ' + harvesters2.length);
     
+    var harvesters3 = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester3');
+    console.log('outside harvester: ' + harvesters3.length);
+
     var transferers = _.filter(Game.creeps, (creep) => creep.memory.role == 'transfer');
     console.log('Transferers: ' + transferers.length);
 
