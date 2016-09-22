@@ -1,0 +1,70 @@
+var roleHarvester3 = {
+
+    /** @param {Creep} creep **/
+    run: function(creep) 
+    {
+	    if(creep.carry.energy < creep.carryCapacity) //energy not full
+	    {
+            var dest = 'E38N45';
+            if(creep.room.name != dest) //if we aren't in the right room then go there
+            {
+                console.log(creep.room.findExitTo(dest));
+                creep.moveTo(creep.pos.findClosest(creep.room.findExitTo(dest)));
+            }
+            else //if we are then go harvest
+            {
+                var sources = creep.room.find(FIND_SOURCES);
+                if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) 
+                {
+                    creep.moveTo(sources[0]);
+                }
+            }
+	    }
+        else //energy full
+        {
+            var dest = 'E39N45';
+            if(creep.room.name != dest) //if we aren't in the right room then go there
+            {
+                console.log(creep.room.findExitTo(dest));
+                creep.moveTo(creep.pos.findClosest(creep.room.findExitTo(dest)));
+            }
+            else //if we are then go harvest
+            {
+                
+                
+                var targets = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_CONTAINER) &&
+                            structure.energy < structure.energyCapacity;
+                    }
+                });
+                if(targets.length > 0) 
+                {
+                    if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
+                    {
+                        creep.moveTo(targets[0]);
+                    }
+                }
+                else
+                {
+                    targets = creep.room.find(FIND_STRUCTURES, {
+                        filter: (structure) => {
+                            return (structure.structureType == STRUCTURE_CONTAINER) &&
+                                structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
+                        }
+                    });
+                    
+                    if(targets.length > 0) 
+                    {
+                        if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
+                        {
+                            creep.moveTo(targets[0]);
+                        }
+                    }
+               }
+            }
+        }
+	}
+};
+
+module.exports = roleHarvester3;
