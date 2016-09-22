@@ -55,7 +55,6 @@ var roleRepairer = {
                 }
                 else
                 {
-                    creep.say('testing');
                     creep.moveTo(17,24);
                 }
             

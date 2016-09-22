@@ -52,7 +52,7 @@ module.exports.loop = function () {
         //console.log('Spawning new upgrader: ' + newName);
     }
     
-    if(transferers.length < 3) {
+    if(transferers.length < 4) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'transfer'});
         //console.log('Spawning new upgrader: ' + newName);
     }
