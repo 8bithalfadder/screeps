@@ -26,7 +26,7 @@ var roleBuilder = {
 
 
         if(creep.memory.building) {
-            var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+            var targets = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
             
             /*var targets = creep.room.find(FIND_CONSTRUCTION_SITES, {
                     filter: (structure) => {
@@ -35,15 +35,15 @@ var roleBuilder = {
             });*/
             //var targets = Game.rooms.constructionSites['57e0b6e8adafdf710cc0028e'];
             //var targets = creep.room.constructionSites['57e0b6e8adafdf710cc0028e'];
-            if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(targets[0]);
+            if(creep.build(targets) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(targets);
             }
         }
         else {
             
              var sources = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return ( structure.structureType == STRUCTURE_CONTAINER) && (structure.store > 0);
+                        return ( structure.structureType == STRUCTURE_CONTAINER)
                     }
             });
             
