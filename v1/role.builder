@@ -35,8 +35,8 @@ var roleBuilder = {
             });*/
             //var targets = Game.rooms.constructionSites['57e0b6e8adafdf710cc0028e'];
             //var targets = creep.room.constructionSites['57e0b6e8adafdf710cc0028e'];
-            if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(targets[0]);
+            if(creep.build(targets) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(targets);
             }
         }
         else {
