@@ -9,7 +9,7 @@ var roleHarvester3 = {
             if(creep.room.name != dest) //if we aren't in the right room then go there
             {
                 console.log(creep.room.findExitTo(dest));
-                creep.moveTo(creep.pos.findClosest(creep.room.findExitTo(dest)));
+                creep.moveTo(creep.room.findExitTo(dest));
             }
             else //if we are then go harvest
             {
