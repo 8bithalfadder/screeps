@@ -47,12 +47,12 @@ module.exports.loop = function () {
 
   
     
-    if(upgraders.length < 5) {
+    if(upgraders.length < 4) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
         //console.log('Spawning new upgrader: ' + newName);
     }
     
-    if(transferers.length < 4) {
+    if(transferers.length < 3) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'transfer'});
         //console.log('Spawning new upgrader: ' + newName);
     }
@@ -77,7 +77,7 @@ module.exports.loop = function () {
         //console.log('Spawning new repairer3: ' + newName);
     }
 
-    if(builders.length < 3) {
+    if(builders.length < 1) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'builder'});
         //console.log('Spawning new builder: ' + newName);
     }
