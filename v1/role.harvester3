@@ -15,7 +15,7 @@ var roleHarvester3 = {
 	        //creep.say('building');
 	    }
         
-	    if(!dumping) //energy not full
+	    if(!creep.memory.dumping) //energy not full
 	    {
             var dest = 'E38N45';
             if(creep.room.name != dest) //if we aren't in the right room then go there
