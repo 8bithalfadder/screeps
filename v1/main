@@ -1,0 +1,133 @@
+var roleHarvester = require('role.harvester');
+var roleHarvester2 = require('role.harvester2');
+var roleUpgrader = require('role.upgrader');
+var roleWanderer = require('role.wanderer');
+var roleBuilder = require('role.builder');
+var roleRepairer = require('role.repair');
+var roleRepairer2 = require('role.repair2');
+var roleRepairer3 = require('role.repair3');
+var roleTransfer = require('role.transfer');
+
+
+
+module.exports.loop = function () {
+
+    for(var name in Memory.creeps) {
+        if(!Game.creeps[name]) {
+            delete Memory.creeps[name];
+        }
+    }
+    
+    var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
+    console.log('Builders: ' + builders.length);
+    
+    var uberbuilders = _.filter(Game.creeps, (creep) => creep.memory.role == 'uberbuilder');
+    console.log('uberBuilders: ' + uberbuilders.length);
+
+    var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+    console.log('Upgraders: ' + upgraders.length);
+    
+    var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
+    console.log('Repairers: ' + repairers.length);
+    
+    var repairers2 = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer2');
+    console.log('Repairers2: ' + repairers2.length);
+    
+    var repairers3 = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer3');
+    console.log('Repairers3: ' + repairers3.length);
+    
+    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    console.log('Harvesters: ' + harvesters.length);
+    
+    var harvesters2 = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester2');
+    console.log('Harvesters2: ' + harvesters2.length);
+    
+    var transferers = _.filter(Game.creeps, (creep) => creep.memory.role == 'transfer');
+    console.log('Transferers: ' + transferers.length);
+
+  
+    
+    if(upgraders.length < 5) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
+        //console.log('Spawning new upgrader: ' + newName);
+    }
+    
+    if(transferers.length < 3) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'transfer'});
+        //console.log('Spawning new upgrader: ' + newName);
+    }
+    
+    if(harvesters2.length < 1) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester2'});
+        //console.log('Spawning new harvester2: ' + newName);
+    }
+    
+    if(repairers.length < 1) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer'});
+        //console.log('Spawning new repairer: ' + newName);
+    }
+    
+    if(repairers2.length < 1) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer2'});
+        //console.log('Spawning new repairer2: ' + newName);
+    }
+    
+    if(repairers3.length < 1) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer3'});
+        //console.log('Spawning new repairer3: ' + newName);
+    }
+
+    if(builders.length < 3) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'builder'});
+        //console.log('Spawning new builder: ' + newName);
+    }
+    
+    if(harvesters.length < 4) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+        //console.log('Spawning new harvester: ' + newName);
+    }
+    
+    for(var name in Game.creeps) {
+        var creep = Game.creeps[name];
+        
+        //roleHarvester.run(creep);
+        
+        if(creep.memory.role == 'harvester') {
+            roleHarvester.run(creep);
+        }
+        
+        if(creep.memory.role == 'harvester2') {
+            roleHarvester2.run(creep);
+        }
+        
+        
+        if(creep.memory.role == 'upgrader') {
+            roleUpgrader.run(creep);
+        }
+        
+        if(creep.memory.role == 'repairer') {
+            roleRepairer.run(creep);
+        }
+        
+        if(creep.memory.role == 'repairer3') {
+            roleRepairer3.run(creep);
+        }
+        
+        if(creep.memory.role == 'repairer2') {
+            roleRepairer2.run(creep);
+        }
+        
+        if(creep.memory.role == 'builder') 
+        {
+            roleBuilder.run(creep);
+        }
+        
+        if(creep.memory.role == 'transfer') 
+        {
+            roleTransfer.run(creep);
+        }
+        
+    }
+    
+    //console.log(Game.cpu.getUsed());
+}
