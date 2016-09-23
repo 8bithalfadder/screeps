@@ -10,7 +10,8 @@
 var roleBuilder = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
+    run: function(creep) 
+    {
 
         if(creep.memory.building && creep.carry.energy == 0) 
         {
@@ -38,7 +39,6 @@ var roleBuilder = {
             
             var sources = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0 
-                    }
             });
             
             if(sources >0)
