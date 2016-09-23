@@ -1,23 +1,32 @@
 var scheduler = {
+    
+    tick: function()
+    {
+        Memory.mytimer++;
+        Memory.mytimer50 = ( Memory.mytimer % 50) == 0 ;
+        Memory.mytimer10 = ( Memory.mytimer % 10) == 0 ;
+        Memory.mytimer5 = ( Memory.mytimer % 5) == 0 ;
+        Memory.mytimer2 = ( Memory.mytimer % 2) == 0 ;
+    },
 
     get50: function()
     {
-        return ( Memory.mytimer % 50) == 0 ;
+        return Memory.mytimer50;
     },
     
     get10: function()
     {
-        return ( Memory.mytimer % 10) == 0 ;
+        return Memory.mytimer10;
     },
     
     get5: function()
     {
-        return ( Memory.mytimer % 5) == 0 ;
+        return Memory.mytimer5;
     },
     
     get2: function()
     {
-        return ( Memory.mytimer % 2) == 0 ;
+        return Memory.mytimer2;
     }
 };
 
