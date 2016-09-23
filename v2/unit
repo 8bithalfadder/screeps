@@ -1,0 +1,25 @@
+getsource: function(creep)
+{
+    
+}
+
+gettarget: function(creep)
+{
+    
+}
+
+dump: function(creep)
+{
+    
+}
+
+build: function(creep)
+{
+    
+}
+
+repair: function(creep)
+{
+    
+}
+
