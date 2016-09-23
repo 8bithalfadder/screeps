@@ -38,7 +38,7 @@ var roleBuilder = {
             
             var sources = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return ( structure.structureType == STRUCTURE_CONTAINER)
+                        return ( ( structure.structureType == STRUCTURE_CONTAINER ) && ( structure.store > 0 ) )
                     }
             });
             
