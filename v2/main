@@ -1,13 +1,5 @@
-var roleHarvester = require('role.harvester');
-var roleHarvester3 = require('role.harvester3');
-var roleHarvester2 = require('role.harvester2');
-var roleUpgrader = require('role.upgrader');
-var roleWanderer = require('role.wanderer');
-var roleBuilder = require('role.builder');
-var roleRepairer = require('role.repair');
-var roleRepairer2 = require('role.repair2');
-var roleRepairer3 = require('role.repair3');
-var roleTransfer = require('role.transfer');
+var scheduler = require('scheduler');
+var unit = require('unit');
 
 module.exports.loop = function () {
 
@@ -22,49 +14,11 @@ module.exports.loop = function () {
         }
     }    
    
-    for(var name in Game.creeps) {
+    for(var name in Game.creeps) 
+    {
         var creep = Game.creeps[name];
         
-        //roleHarvester.run(creep);
-        
-        if(creep.memory.role == 'harvester') {
-            roleHarvester.run(creep);
-        }
-        
-        if(creep.memory.role == 'harvester3') {
-            roleHarvester3.run(creep);
-        }
-        
-        if(creep.memory.role == 'harvester2') {
-            roleHarvester2.run(creep);
-        }
-        
-        
-        if(creep.memory.role == 'upgrader') {
-            roleUpgrader.run(creep);
-        }
-        
-        if(creep.memory.role == 'repairer') {
-            roleRepairer.run(creep);
-        }
-        
-        if(creep.memory.role == 'repairer3') {
-            roleRepairer3.run(creep);
-        }
-        
-        if(creep.memory.role == 'repairer2') {
-            roleRepairer2.run(creep);
-        }
-        
-        if(creep.memory.role == 'builder') 
-        {
-            roleBuilder.run(creep);
-        }
-        
-        if(creep.memory.role == 'transfer') 
-        {
-            roleTransfer.run(creep);
-        }
+        unit.tick(creep);
         
     }
     

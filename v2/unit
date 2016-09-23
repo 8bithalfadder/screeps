@@ -1,50 +1,54 @@
-getsource: function(creep)
-{
-    
-}
+var unit = {
 
-gettarget: function(creep)
-{
+    getsource: function(creep)
+    {
+        
+    },
     
-}
-
-dump: function(creep)
-{
+    gettarget: function(creep)
+    {
+        
+    },
     
-}
-
-build: function(creep)
-{
+    dump: function(creep)
+    {
+        
+    },
     
-}
-
-repair: function(creep)
-{
+    build: function(creep)
+    {
+        
+    },
     
-}
-
-harvest: function(creep)
-{
+    repair: function(creep)
+    {
+        
+    },
     
-}
-
-transfer: function(creep)
-{
+    harvest: function(creep)
+    {
+        
+    },
     
-}
-
-pickup: function(creep)
-{
+    transfer: function(creep)
+    {
+        
+    },
     
-}
-
-attack: function(creep)
-{
+    pickup: function(creep)
+    {
+        
+    },
     
-}
-
-defend: function(creep)
-{
+    attack: function(creep)
+    {
+        
+    },
     
-}
+    defend: function(creep)
+    {
+        
+    }
+};
 
+module.exports = unit;
