@@ -43,3 +43,8 @@ attack: function(creep)
     
 }
 
+defend: function(creep)
+{
+    
+}
+

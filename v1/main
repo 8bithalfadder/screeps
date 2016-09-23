@@ -8,6 +8,7 @@ var roleRepairer = require('role.repair');
 var roleRepairer2 = require('role.repair2');
 var roleRepairer3 = require('role.repair3');
 var roleTransfer = require('role.transfer');
+var scheduler = require('scheduler');
 
 
 
@@ -46,7 +47,8 @@ module.exports.loop = function () {
     var transferers = _.filter(Game.creeps, (creep) => creep.memory.role == 'transfer');
     console.log('Transferers: ' + transferers.length);
 
-  
+  console.log(scheduler.get5());
+    
     
     if(upgraders.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
