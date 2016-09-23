@@ -3,17 +3,17 @@ var scheduler = {
     get50: function()
     {
         return ( Memory.mytimer % 50) == 0 ;
-    }
+    },
     
     get10: function()
     {
         return ( Memory.mytimer % 10) == 0 ;
-    }
+    },
     
     get5: function()
     {
         return ( Memory.mytimer % 5) == 0 ;
-    }
+    },
     
     get2: function()
     {
