@@ -4,9 +4,6 @@ var unit = require('unit');
 
 module.exports.loop = function () {
 
-    scheduler.tick();
-    supervisor.tick();
-
     if(scheduler.get10())
     {
         for(var name in Memory.creeps) 
@@ -18,13 +15,12 @@ module.exports.loop = function () {
         }
     }    
    
+    scheduler.tick();
+    supervisor.tick();
+   
     for(var name in Game.creeps) 
     {
         var creep = Game.creeps[name];
-        
         unit.tick(creep);
-        
     }
-    
-    //console.log(Game.cpu.getUsed());
 }
