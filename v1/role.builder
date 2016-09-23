@@ -38,7 +38,7 @@ var roleBuilder = {
             }
             else
             {
-                targets = creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (structure) => structure.structureType == STRUCTURE_WALL && structure.hits < ( structure.hitsMax * .01 ) });
+                targets = creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (structure) => structure.structureType == STRUCTURE_WALL && structure.hits < ( structure.hitsMax * .001 ) });
                 if(creep.repair(targets) == ERR_NOT_IN_RANGE) 
                 {
                     creep.moveTo(targets);
