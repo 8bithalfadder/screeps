@@ -41,7 +41,7 @@ var roleBuilder = {
                     filter: (structure) => structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0 
             });
             
-            if(sources >0)
+            if(sources)
             {
                 if(creep.withdraw(sources,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
                 {
