@@ -23,3 +23,23 @@ repair: function(creep)
     
 }
 
+harvest: function(creep)
+{
+    
+}
+
+transfer: function(creep)
+{
+    
+}
+
+pickup: function(creep)
+{
+    
+}
+
+attack: function(creep)
+{
+    
+}
+
