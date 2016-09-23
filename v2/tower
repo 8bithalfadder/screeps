@@ -1,0 +1,25 @@
+var tower = {
+
+tick: function()
+{
+    
+},
+
+attack: function()
+{
+    
+},
+
+repair: function()
+{
+    
+},
+
+heal: function()
+{
+    
+}
+
+};
+
+module.exports = tower;

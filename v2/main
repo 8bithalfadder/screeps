@@ -1,7 +1,11 @@
+var supervisor = require('supervisor');
 var scheduler = require('scheduler');
 var unit = require('unit');
 
 module.exports.loop = function () {
+
+    scheduler.tick();
+    supervisor.tick();
 
     if(scheduler.get10())
     {

@@ -1,8 +1,75 @@
 var unit = {
+    
+    tick: function(creep)
+    {
+        //look for enemies
+        if(scheduler.get5())
+        {
+            if(findenemy())
+            {
+                //run home
+            }
+            
+        }
+        
+        //check for new job
+        if(scheduler.get50())
+        {
+            if()
+            {
+                
+            }
+            
+        }
+        
+        switch(creep.memory.task)
+        {
+            case 'harvest':
+                //thing
+                break;
+            case 'build':
+                //thing
+                break;
+            case 'dump':
+                //thing
+                break;
+            case 'repair':
+                //thing
+                break;
+            case 'upgrade':
+                //thing
+                break;
+            case 'transfer':
+                //thing
+                break;
+            case 'pickup':
+                //thing
+                break;
+            case 'attack':
+                //thing
+                break;
+            case 'defend':
+                //thing
+                break;
+            case 'scout':
+                //thing
+                break;
+            case 'expand':
+                //thing
+                break;
+        }
+    },
 
     getsource: function(creep)
     {
-        
+        if(scheduler.get5())
+        {
+            
+            var mysource; 
+            
+            //if storage isn't empty use it, if it is get nearest non empty container, if there aren't any then queue more harvesting
+            
+        }
     },
     
     gettarget: function(creep)
@@ -21,6 +88,11 @@ var unit = {
     },
     
     repair: function(creep)
+    {
+        
+    },
+    
+    upgrade: function(creep)
     {
         
     },
@@ -46,6 +118,11 @@ var unit = {
     },
     
     defend: function(creep)
+    {
+        
+    },
+    
+    findenemy: function(creep)
     {
         
     }
