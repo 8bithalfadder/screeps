@@ -166,12 +166,16 @@ var unit = {
     
     harvest: function(creep)
     {
-        
+        if(creep.pos.isEqualTo(Game.flags.Flag1)) {
+    creep.move(RIGHT);
+}
     },
     
     transfer: function(creep)
     {
-        
+        if(creep.pos.isEqualTo(Game.flags.Flag1)) {
+    creep.move(RIGHT);
+}
     },
     
     pickup: function(creep)

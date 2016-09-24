@@ -50,7 +50,7 @@ module.exports.loop = function () {
   console.log(scheduler.get5());
     scheduler.tick();
     
-    if(upgraders.length < 2) {
+    if(upgraders.length < 3) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
         //console.log('Spawning new upgrader: ' + newName);
     }
