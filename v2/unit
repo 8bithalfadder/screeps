@@ -25,7 +25,7 @@ var unit = {
         }
         */
         //are we going out to do a job
-        if(creep.memory.going)
+        if(creep.memory.working)
         {
             switch(creep.memory.task)
             {
@@ -45,7 +45,10 @@ var unit = {
                     //thing
                     break;
                 case 'pickup':
-                    //thing
+                    this.pickup(creep);
+                    break;
+                case 'withdraw':
+                    this.withdraw(creep);
                     break;
                 case 'attack':
                     //thing
@@ -63,8 +66,14 @@ var unit = {
         }//not doing a job, must be going to get resources
         else
         {
-            this.getsource(creep);
-            this.harvest(creep);
+            if(creep.memory.job = 'harvester')
+            {
+                this.harvest(creep);
+            }
+            else
+            {
+                this.withdraw(creep);
+            }
         }
     },
 
@@ -87,6 +96,7 @@ var unit = {
     dump: function(creep)
     {
         //find a place to dump a load of resources, first spawns, then extensions, then containers, give me the closest one.
+        if(creep.memory.target != undefined && )
         var target = creep.room.findClosestByPath(FIND_STRUCTURES, {
             filter: (structure) => {
                 return ( (structure.structureType == STRUCTURE_EXTENSION || 
@@ -171,18 +181,73 @@ var unit = {
                             return ( (flag.color == COLOR_YELLOW) && (flag.secondaryColor == COLOR_YELLOW) )
                         }
                 });
-
+        if(!creep.inRangeTo(target,3)) 
+        {
+            creep.moveTo(target);
+        }
+        else
+        {
+            this.getsource(creep);
+            if(creep.harvest(source) == ERR_NOT_IN_RANGE) 
+            {
+                creep.moveTo(source);
+            }
+        }
     },
     
     transfer: function(creep)
     {
+        var target = creep.room.findClosestByPath(FIND_FLAGS, {
+                        filter: (flag) => {
+                            return ( (flag.color == COLOR_BLUE) && (flag.secondaryColor == COLOR_YELLOW) )
+                        }
+                });
+        if(!creep.inRangeTo(target,3)) 
+        {
+            creep.moveTo(target);
+        }
+        else
+        {
+            
+        }
         
-
+        
     },
     
     pickup: function(creep)
     {
-        
+        var targets = creep.room.find(FIND_DROPPED_RESOURCES);
+        if(targets.length) 
+        {
+            creep.moveTo(targets[0]);
+            creep.pickup(targets[0]);
+        }
+    },
+    
+    withdraw: function(creep)
+    {
+        var target = creep.room.findClosestByPath(FIND_STRUCTURES, {
+            filter: (structure) => {
+                return ( (structure.structureType == STRUCTURE_EXTENSION || 
+                structure.structureType == STRUCTURE_SPAWN ) &&
+                structure.energy < structure.energyCapacity ) ||
+                ( structure.structureType == STRUCTURE_CONTAINER &&
+                structure.store[RESOURCE_ENERGY] < structure.storeCapacity )
+                ;
+                }
+            });
+            //if target exists try and dump into it, if that fails because you aren't in range move towards it.
+        if(target != undefined) 
+        {
+            if(creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
+            {
+                creep.moveTo(target);
+            }
+        }
+        else
+        {
+            creep.say('no draw!');
+        }
     },
     
     attack: function(creep)
