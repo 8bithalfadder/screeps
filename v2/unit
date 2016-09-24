@@ -166,16 +166,18 @@ var unit = {
     
     harvest: function(creep)
     {
-        if(creep.pos.isEqualTo(Game.flags.Flag1)) {
-    creep.move(RIGHT);
-}
+        var target = creep.room.findClosestByPath(FIND_FLAGS, {
+                        filter: (flag) => {
+                            return ( (flag.color == COLOR_YELLOW) && (flag.secondaryColor == COLOR_YELLOW) )
+                        }
+                });
+
     },
     
     transfer: function(creep)
     {
-        if(creep.pos.isEqualTo(Game.flags.Flag1)) {
-    creep.move(RIGHT);
-}
+        
+
     },
     
     pickup: function(creep)
