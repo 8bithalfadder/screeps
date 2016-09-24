@@ -2,7 +2,9 @@ var unit = {
     
     tick: function(creep)
     {
+        //implement this stuff later, first get the basic necessary functionality.
         //look for enemies
+        /*
         if(scheduler.get5())
         {
             if(findenemy())
@@ -21,42 +23,48 @@ var unit = {
             }
             
         }
-        
-        switch(creep.memory.task)
+        */
+        //are we going out to do a job
+        if(creep.memory.going)
         {
-            case 'harvest':
-                //thing
-                break;
-            case 'build':
-                //thing
-                break;
-            case 'dump':
-                //thing
-                break;
-            case 'repair':
-                //thing
-                break;
-            case 'upgrade':
-                //thing
-                break;
-            case 'transfer':
-                //thing
-                break;
-            case 'pickup':
-                //thing
-                break;
-            case 'attack':
-                //thing
-                break;
-            case 'defend':
-                //thing
-                break;
-            case 'scout':
-                //thing
-                break;
-            case 'expand':
-                //thing
-                break;
+            switch(creep.memory.task)
+            {
+                case 'build':
+                    this.build(creep);
+                    break;
+                case 'dump':
+                    this.dump(creep);
+                    break;
+                case 'repair':
+                    this.repair(creep);
+                    break;
+                case 'upgrade':
+                    this.upgrade(creep);
+                    break;
+                case 'transfer':
+                    //thing
+                    break;
+                case 'pickup':
+                    //thing
+                    break;
+                case 'attack':
+                    //thing
+                    break;
+                case 'defend':
+                    //thing
+                    break;
+                case 'scout':
+                    //thing
+                    break;
+                case 'expand':
+                    //thing
+                    break;
+            }
+        }//not doing a job, must be going to get resources
+        else
+        {
+            this.getsource(creep);
+            this.harvest(creep);
         }
     },
 
@@ -65,36 +73,95 @@ var unit = {
         if(scheduler.get5())
         {
             
-            var mysource; 
+            creep.memory.mysource; 
             
             //if storage isn't empty use it, if it is get nearest non empty container, if there aren't any then queue more harvesting
             
         }
+        else
+        {
+            return creep.memory.mysource;
+        }
     },
-    
-    gettarget: function(creep)
-    {
-        
-    },
-    
+
     dump: function(creep)
     {
-        
+        //find a place to dump a load of resources, first spawns, then extensions, then containers, give me the closest one.
+        var target = creep.room.findClosestByPath(FIND_STRUCTURES, {
+            filter: (structure) => {
+                return ( (structure.structureType == STRUCTURE_EXTENSION || 
+                structure.structureType == STRUCTURE_SPAWN ) &&
+                structure.energy < structure.energyCapacity ) ||
+                ( structure.structureType == STRUCTURE_CONTAINER &&
+                structure.store[RESOURCE_ENERGY] < structure.storeCapacity )
+                ;
+                }
+            });
+            //if target exists try and dump into it, if that fails because you aren't in range move towards it.
+        if(target != undefined) 
+        {
+            if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
+            {
+                creep.moveTo(target);
+            }
+        }
+        else
+        {
+            creep.say('no dump!');
+        }
     },
     
     build: function(creep)
     {
-        
+        //find a construction site
+        var target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+        //try and build it, if that fails because you aren't in range move towards it.
+        if(targets != undefined)
+        {
+            if(creep.build(targets) == ERR_NOT_IN_RANGE) 
+            {
+                creep.moveTo(targets);
+            }
+            else
+            {
+                creep.say('no make');
+            }
+        }
     },
     
     repair: function(creep)
     {
-        
+        var target = creep.room.findClosestByPath(FIND_STRUCTURES, {
+                    filter: (structure) => structure.structureType == STRUCTURE_CONTAINER && structure.hits < structure.hitsMax
+            });
+            
+            if(target == undefined)
+            {
+                target = creep.room.findClosestByPath(FIND_STRUCTURES, {
+                        filter: (structure) => {
+                            return ( (structure.structureType == STRUCTURE_ROAD) && (structure.hits < (structure.hitsMax * 0.5)) )
+                        }
+                });
+            }
+            if(target != undefined)
+            {
+                if(creep.repair(target[0]) == ERR_NOT_IN_RANGE) 
+                {
+                    creep.moveTo(target[0]);
+                }
+            }
+            else
+            {
+                creep.say('no fix');
+            }
     },
     
     upgrade: function(creep)
     {
-        
+        if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) 
+        {
+            creep.moveTo(creep.room.controller);
+        }
     },
     
     harvest: function(creep)

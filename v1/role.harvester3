@@ -37,7 +37,6 @@ var roleHarvester3 = {
             var dest = 'E39N45';
             if(creep.room.name != dest) //if we aren't in the right room then go there
             {
-                console.log(creep.room.findExitTo(dest));
                 creep.moveTo(Game.flags.Flag2);
             }
             else //if we are then go harvest

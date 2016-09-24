@@ -20,14 +20,10 @@ var roleUpgrader = {
             }
         }
         else {
-            var sources = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return ( structure.structureType == STRUCTURE_CONTAINER)
-                    }
-            });
             
-            if(creep.withdraw(sources[0],RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[0]);
+            var source = creep.room.storage;
+            if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(source);
             }
             else
             {

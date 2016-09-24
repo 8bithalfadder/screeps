@@ -29,7 +29,7 @@ var roleBuilder = {
         {
             var targets = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
 
-            if(targets > 0)
+            if(targets != undefined)
             {
                 if(creep.build(targets) == ERR_NOT_IN_RANGE) 
                 {
@@ -38,7 +38,7 @@ var roleBuilder = {
             }
             else
             {
-                targets = creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (structure) => structure.structureType == STRUCTURE_WALL && structure.hits < 100000 });
+                targets = creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (structure) => (structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) && structure.hits < 100000 });
                 if(creep.repair(targets) == ERR_NOT_IN_RANGE) 
                 {
                     creep.moveTo(targets);
