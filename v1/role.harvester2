@@ -16,12 +16,14 @@ var roleHarvester2 = {
                     }
             });
             if(targets.length > 0) {
+                creep.say('containter');
                 if(creep.transfer(targets[1], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[1]);
                 }
             }
             else
             {
+                creep.say('harvest');
                 targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_CONTAINER) &&
