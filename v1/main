@@ -51,17 +51,17 @@ module.exports.loop = function () {
     scheduler.tick();
     
     
-    /*
+    
     if(transferers.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'transfer'});
         //console.log('Spawning new upgrader: ' + newName);
     }
-    */
-    /*
+    
+    
     if(harvesters2.length < 1) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester2'});
         //console.log('Spawning new harvester2: ' + newName);
-    }*/
+    }
     
     if(repairers.length < 1) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer'});
@@ -89,7 +89,7 @@ module.exports.loop = function () {
     }
     */
     
-    if(upgraders.length < 2) {
+    if(upgraders.length < 3) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
         //console.log('Spawning new upgrader: ' + newName);
     }
