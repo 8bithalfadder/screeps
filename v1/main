@@ -60,7 +60,7 @@ module.exports.loop = function () {
   console.log(scheduler.get5());
     scheduler.tick();
     
-    
+    /*
     
     if(transferers.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'transfer'});
@@ -77,12 +77,12 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer'});
         //console.log('Spawning new repairer: ' + newName);
     }
-    /*
-    if(repairers2.length < 0) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer2'});
-        //console.log('Spawning new repairer2: ' + newName);
-    }*/
     
+    //if(repairers2.length < 0) {
+    //    var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer2'});
+    //    //console.log('Spawning new repairer2: ' + newName);
+   // }
+   //
     if(repairers3.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer3'});
         //console.log('Spawning new repairer3: ' + newName);
@@ -108,7 +108,7 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
         //console.log('Spawning new harvester: ' + newName);
     }
-    
+    */
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         
