@@ -46,7 +46,7 @@ var roleBuilder = {
                 }
             }
             */
-            var towers = Game.rooms[roomName].find(
+            var towers = Game.rooms['E38N45'].find(
             FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}});
             
             if(creep.deposit(towers,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
