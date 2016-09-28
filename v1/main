@@ -63,7 +63,7 @@ module.exports.loop = function () {
         //console.log('Spawning new harvester2: ' + newName);
     }
     
-    if(repairers.length < 1) {
+    if(repairers.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer'});
         //console.log('Spawning new repairer: ' + newName);
     }
@@ -73,7 +73,7 @@ module.exports.loop = function () {
         //console.log('Spawning new repairer2: ' + newName);
     }*/
     
-    if(repairers3.length < 1) {
+    if(repairers3.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer3'});
         //console.log('Spawning new repairer3: ' + newName);
     }
