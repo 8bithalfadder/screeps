@@ -27,6 +27,7 @@ var roleBuilder = {
 
         if(creep.memory.building) 
         {
+            /*
             var targets = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
 
             if(targets != undefined)
@@ -44,11 +45,20 @@ var roleBuilder = {
                     creep.moveTo(targets);
                 }
             }
+            */
+            var towers = Game.rooms[roomName].find(
+            FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}});
+            
+            if(creep.deposit(towers,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
+                {
+                    creep.moveTo(towers);
+                }
+            
         }
         else 
         {
             
-            sources = creep.room.storage;
+            var sources = creep.room.storage;
             if(creep.withdraw(sources,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
             {
                 creep.moveTo(sources);
