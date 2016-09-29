@@ -20,12 +20,12 @@ module.exports.loop = function () {
         }
     }
     
-    var hostiles = Game.rooms.E38N45.find(FIND_HOSTILE_CREEPS);
+    var hostiles = Game.rooms['E39N45'].find(FIND_HOSTILE_CREEPS);
     
     if(hostiles.length > 0) {
         var username = hostiles[0].owner.username;
         Game.notify(`User ${username} spotted in room `);
-        var towers = Game.rooms['E38N45'].find(
+        var towers = Game.rooms['E39N45'].find(
             FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}});
         towers.forEach(tower => tower.attack(hostiles[0]));
     }
@@ -61,7 +61,7 @@ module.exports.loop = function () {
     scheduler.tick();
     
     
-    
+    /*
     if(transferers.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'transfer'});
         //console.log('Spawning new upgrader: ' + newName);
@@ -77,7 +77,7 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer'});
         //console.log('Spawning new repairer: ' + newName);
     }
-    
+    */
     //if(repairers2.length < 0) {
     //    var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer2'});
     //    //console.log('Spawning new repairer2: ' + newName);
