@@ -20,7 +20,7 @@ module.exports.loop = function () {
         }
     }
     
-    var hostiles = Game.rooms['E38N45'].find(FIND_HOSTILE_CREEPS);
+    var hostiles = Game.rooms.E38N45.find(FIND_HOSTILE_CREEPS);
     
     if(hostiles.length > 0) {
         var username = hostiles[0].owner.username;
@@ -60,7 +60,7 @@ module.exports.loop = function () {
   console.log(scheduler.get5());
     scheduler.tick();
     
-    /*
+    
     
     if(transferers.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'transfer'});
@@ -108,7 +108,7 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
         //console.log('Spawning new harvester: ' + newName);
     }
-    */
+    
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         
