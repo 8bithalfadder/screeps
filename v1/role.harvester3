@@ -42,37 +42,15 @@ var roleHarvester3 = {
             else //if we are then go harvest
             {
                 
-                
-                var targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_CONTAINER) &&
-                            structure.energy < structure.energyCapacity;
-                    }
-                });
-                if(targets.length > 0) 
+                var target = creep.room.storage;
+            
+                if(target != undefined) 
                 {
-                    if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
+                    if(creep.transfer(targets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
                     {
-                        creep.moveTo(targets[0]);
+                        creep.moveTo(targets);
                     }
                 }
-                else
-                {
-                    targets = creep.room.find(FIND_STRUCTURES, {
-                        filter: (structure) => {
-                            return (structure.structureType == STRUCTURE_CONTAINER) &&
-                                structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
-                        }
-                    });
-                    
-                    if(targets.length > 0) 
-                    {
-                        if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) 
-                        {
-                            creep.moveTo(targets[0]);
-                        }
-                    }
-               }
             }
         }
 	}
