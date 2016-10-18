@@ -83,7 +83,7 @@ module.exports.loop = function () {
     //    //console.log('Spawning new repairer2: ' + newName);
    // }
    //
-    if(repairers3.length < 2) {
+    if(repairers3.length < 0) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer3'});
         //console.log('Spawning new repairer3: ' + newName);
     }
